@@ -24,8 +24,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
     @NamedQuery(name = "Employee.findByDocument", query = "SELECT e FROM Employee e WHERE e.document = :document"),
     @NamedQuery(name = "Employee.findByFullname", query = "SELECT e FROM Employee e WHERE e.fullname = :fullname"),
-    @NamedQuery(name = "Employee.findByDireccion", query = "SELECT e FROM Employee e WHERE e.direccion = :direccion"),
-    @NamedQuery(name = "Employee.findByTelefono", query = "SELECT e FROM Employee e WHERE e.telefono = :telefono")})
+    @NamedQuery(name = "Employee.findByAddress", query = "SELECT e FROM Employee e WHERE e.address = :address"),
+    @NamedQuery(name = "Employee.findByPhone", query = "SELECT e FROM Employee e WHERE e.phone = :phone")})
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,11 +37,11 @@ public class Employee implements Serializable {
     @Column(name = "fullname")
     private String fullname;
     @Basic(optional = false)
-    @Column(name = "direccion")
-    private String direccion;
+    @Column(name = "address")
+    private String address;
     @Basic(optional = false)
-    @Column(name = "telefono")
-    private String telefono;
+    @Column(name = "phone")
+    private String phone;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeId")
     private Collection<Record> recordCollection;
     @JoinColumn(name = "type_id", referencedColumnName = "id")
@@ -55,11 +55,11 @@ public class Employee implements Serializable {
         this.document = document;
     }
 
-    public Employee(Long document, String fullname, String direccion, String telefono) {
+    public Employee(Long document, String fullname, String address, String phone) {
         this.document = document;
         this.fullname = fullname;
-        this.direccion = direccion;
-        this.telefono = telefono;
+        this.address = address;
+        this.phone = phone;
     }
 
     public Long getDocument() {
@@ -78,20 +78,20 @@ public class Employee implements Serializable {
         this.fullname = fullname;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Collection<Record> getRecordCollection() {
