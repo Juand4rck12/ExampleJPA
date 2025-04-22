@@ -1,5 +1,6 @@
 package co.edu.sena.examplejpa.persistence;
 
+import co.edu.sena.examplejpa.model.Record;
 import java.util.List;
 import javax.persistence.Query;
 
@@ -38,7 +39,7 @@ public class RecordDAO implements IRecordDAO {
     }
 
     @Override
-    public Record findById(Integer id) throws Exception {
+    public Record findById(int id) throws Exception {
         try {
             return EntityManagerHelper.getEntityManager().find(Record.class, id);
         } catch (RuntimeException e) {

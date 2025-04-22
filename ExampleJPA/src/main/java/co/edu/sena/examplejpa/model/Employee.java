@@ -132,7 +132,7 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.examplejpa.model.Employee[ document=" + document + " ]";
+        return fullname;
     }
     
 }
